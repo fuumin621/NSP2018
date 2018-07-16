@@ -1,0 +1,21 @@
+﻿  main.cpp
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(90): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(90): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(90): note: 書式文字列に '%I64d' を使用することをお勧めします
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(164): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(164): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(164): note: 書式文字列に '%I64d' を使用することをお勧めします
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(248): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(248): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(248): note: 書式文字列に '%I64d' を使用することをお勧めします
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(264): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(264): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(264): note: 書式文字列に '%I64d' を使用することをお勧めします
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(285): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(285): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(285): note: 書式文字列に '%I64d' を使用することをお勧めします
+c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(289): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(289): note: 書式文字列に '%lld' を使用することをお勧めします
+  c:\users\msysstu022\desktop\０７１３修正\nsp2018\main.cpp(289): note: 書式文字列に '%I64d' を使用することをお勧めします
+  NSP2018.vcxproj -> C:\Users\msysstu022\Desktop\０７１３修正\Debug\NSP2018.exe
+  NSP2018.vcxproj -> C:\Users\msysstu022\Desktop\０７１３修正\Debug\NSP2018.pdb (Partial PDB)
