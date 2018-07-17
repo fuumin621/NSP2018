@@ -59,15 +59,17 @@ int main(void)
 
 		//get_initial_solution();//‰Šú‰ð¶¬
 		//‰Šú‰ð“ü—Í
-		//get_initial_example();
-		get_initial_solution();//‰Šú‰ð¶¬
-		//i_solution.input_model(X);
+		//get_initial_solution();//‰Šú‰ð¶¬
+		get_initial_example();
+		i_solution.input_model(X);
 		i_solution.evaluate();
 		i_solution.output_value();
 		i_solution.output_roster(1);
 		printf("initial_value = %lld\n", i_solution.value);
+
 		
-		solution zantei = i_solution;
+		
+		
 
 
 
@@ -79,18 +81,14 @@ int main(void)
 			if (terminal)
 			{
 				printf("¬Œ÷‚Å‚·‚Ì\n");
-				//i_solution.output_value();
-				if (zantei.value > i_solution.value) {
-					zantei = i_solution;
-				}
 			}
 
 		} while (terminal);
 
-		printf("zantei=%d\n", zantei.value);
+		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
 		
-
+		output_initial();
 		//output_initial();
 
 		/*int kinbou_kaizen[4];
@@ -137,6 +135,8 @@ int main(void)
 
 		}
 		*/
+
+		solution zantei = i_solution;
 		int select_nurse = 0;
 		for (select_nurse = 0; select_nurse < I; select_nurse++) {
 			i_solution.output_roster(0);
