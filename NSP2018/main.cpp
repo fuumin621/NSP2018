@@ -66,15 +66,13 @@ int main(void)
 		i_solution.output_value();
 		i_solution.output_roster(1);
 		printf("initial_value = %lld\n", i_solution.value);
+		output_initial();
+
+
 
 		
-		
-		
-
-
-
 		bool terminal;
-		do
+		/*do
 		{
 			terminal = one_change_N();
 
@@ -88,7 +86,9 @@ int main(void)
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
 		
-		output_initial();
+		output_initial();*/
+
+
 		//output_initial();
 
 		/*int kinbou_kaizen[4];
@@ -135,27 +135,32 @@ int main(void)
 
 		}
 		*/
-
+		
 		solution zantei = i_solution;
 		int select_nurse = 0;
 		for (select_nurse = 0; select_nurse < I; select_nurse++) {
 			i_solution.output_roster(0);
+			zantei = i_solution;
 			printf("before_value=%lld\n", i_solution.nurse_value[select_nurse]);
 			for (int count = 0; count <= 100000; count++) {
 
 
 				//two_change_Y2_one_nurse(select_nurse);
 				one_select_i_t(select_nurse, 5);
-				//select_i_t(10, 5);
 				//if (count % 1000 == 0) { i_solution.output_value(); }
 				if (zantei.value > i_solution.value) {
 					zantei = i_solution;
 
 				}
 				if (zantei.nurse_value[select_nurse] < 1000) {
-					i_solution = zantei;
 					break; 
 				}
+				if (count % 1000 == 0) {
+					reset_nurse_solution(select_nurse);
+					zantei = i_solution;
+				}
+
+
 			}
 			i_solution = zantei;
 			printf("after_value=%lld\n", i_solution.nurse_value[select_nurse]);
@@ -165,6 +170,20 @@ int main(void)
 		//printf("i_solution.nurse_value[0]=%lld\n", i_solution.nurse_value[select_nurse]);
 		i_solution.output_roster(1);
 
+		do
+		{
+			terminal = one_change_N();
+
+			if (terminal)
+			{
+				printf("ê¨å˜Ç≈Ç∑ÇÃ\n");
+			}
+
+		} while (terminal);
+
+		printf("zantei=%d\n", i_solution.value);
+		i_solution.output_value();
+		zantei = i_solution;
 
 
 		/*for (int count = 0; count <= 1000; count++) {
@@ -182,22 +201,21 @@ int main(void)
 
 			}*/
 		//printf("i_solution.nurse_value[0]=%lld\n", i_solution.nurse_value[select_nurse]);
-		i_solution.output_roster(2);
+		//i_solution.output_roster(2);
 
-		/*for (int count = 0; count <= 100000; count++) {
+		for (int count = 0; count <= 100000; count++) {
 
 
-			//two_change_Y2_one_nurse(0);
-			ex_rand_i();
+			select_i_t(5, 5);
 			//if (count % 1000 == 0) { i_solution.output_value(); }
 			if (zantei.value > i_solution.value) {
-			zantei = i_solution;
+				zantei = i_solution;
 
 			}
 
 
-			}
-			*/
+		}
+			
 
 		/*printf("zantei=%d\n", zantei.value);
 		printf("èIóπ\n");
@@ -205,9 +223,8 @@ int main(void)
 			printf("kinbou %d: count=%d,kaizen=%d\n", i, kinbou_count[i], kinbou_kaizen[i]);
 			}*/
 
-		/*i_solution.output_value();
 		i_solution = zantei;
-
+		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
 
 
@@ -215,7 +232,7 @@ int main(void)
 
 
 
-		for (int count = 0; count <= 100000; count++) {
+		/*for (int count = 0; count <= 100000; count++) {
 
 			two_change_Y2();
 			//if (count % 1000 == 0) { i_solution.output_value(); }
@@ -230,40 +247,23 @@ int main(void)
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
 
-		*/
-
-		for (int count = 0; count <= 100000; count++) {
-
-			two_change_Y2();
-			//if (count % 1000 == 0) { i_solution.output_value(); }
-			if (zantei.value > i_solution.value) {
-				zantei = i_solution;
-
-			}
-
-		}
-
-		i_solution = zantei;
-		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
-
-
-		for (int count = 0; count <= 100000; count++) {
-
-			ex_rand_i();
-			//if (count % 1000 == 0) { i_solution.output_value(); }
-			if (zantei.value > i_solution.value) {
-				zantei = i_solution;
-
-			}
-
-		}
-
-		i_solution = zantei;
-		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
 		
+		/*zantei = i_solution;
+		for (int count = 0; count <= 100000; count++) {
 
+			two_change_Y2();
+			//if (count % 1000 == 0) { i_solution.output_value(); }
+			if (zantei.value > i_solution.value) {
+				zantei = i_solution;
+
+			}
+
+		}
+
+		i_solution = zantei;
+		i_solution.output_value();
+		printf("zantei=%d\n", zantei.value);
+		*/
 		do
 		{
 			terminal = one_change_N();
@@ -290,6 +290,7 @@ int main(void)
 
 		end_clock = clock();
 		printf("Caluculation Time :%lf\n", (double)(end_clock - start_clock) / CLOCKS_PER_SEC);
+		
 	}
 	
 }
