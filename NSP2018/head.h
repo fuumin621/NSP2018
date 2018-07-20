@@ -36,6 +36,8 @@
 void input_data();
 void get_initial_solution();
 void get_solution();
+void reset_nurse_solution(int i);
+
 
 void shuffle(int ary[], int size);
 

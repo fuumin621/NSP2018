@@ -77,7 +77,27 @@ void random_nurse_solution(int i)
 	}
 
 
+
+
 }
+
+void reset_nurse_solution(int i)
+{
+	int count = 0;
+	solution best;
+	while (count < TRY) {
+		random_nurse_solution(i);
+		if (count == 0) { best = temp_for_initial; }//Å‰‚¾‚Á‚½‚ç‰Šú‰»
+		if (best.nurse_value[i] > temp_for_initial.nurse_value[i]) {
+			best = temp_for_initial;
+		}
+		count++;
+	}
+	i_solution.input_model_nurse(i, best.X);
+	i_solution.evaluate();
+
+}
+
 
 
 void shuffle(int ary[], int size)
