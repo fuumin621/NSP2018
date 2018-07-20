@@ -1,44 +1,8 @@
-﻿2018/07/16 22:12:16 にビルドを開始しました。
+﻿2018/07/17 0:13:26 にビルドを開始しました。
      1>ノード 2 上のプロジェクト "C:\Users\郁也\Desktop\NSP2018\NSP2018\NSP2018.vcxproj" (Build ターゲット)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt evaluate.cpp feasibility.cpp initial.cpp input.cpp main.cpp neighbour.cpp roster.cpp
-         roster.cpp
-         neighbour.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp
          main.cpp
-         input.cpp
-         initial.cpp
-     1>initial.cpp(58): warning C4244: '初期化中' : '__int64' から 'int' への変換です。データが失われる可能性があります。
-         feasibility.cpp
-     1>feasibility.cpp(159): warning C4244: '初期化中' : '__int64' から 'int' への変換です。データが失われる可能性があります。
-         evaluate.cpp
-     1>evaluate.cpp(139): warning C4258: 'k' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(131) : 'k' の定義が無視されました。
-                 evaluate.cpp(84) : 'k' の定義が使用されました。
-     1>evaluate.cpp(149): warning C4258: 'k' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(131) : 'k' の定義が無視されました。
-                 evaluate.cpp(84) : 'k' の定義が使用されました。
-     1>evaluate.cpp(157): warning C4258: 'k' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(131) : 'k' の定義が無視されました。
-                 evaluate.cpp(84) : 'k' の定義が使用されました。
-     1>evaluate.cpp(181): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(173) : 'i' の定義が無視されました。
-                 evaluate.cpp(84) : 'i' の定義が使用されました。
-     1>evaluate.cpp(183): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(173) : 'i' の定義が無視されました。
-                 evaluate.cpp(84) : 'i' の定義が使用されました。
-     1>evaluate.cpp(187): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(173) : 'i' の定義が無視されました。
-                 evaluate.cpp(84) : 'i' の定義が使用されました。
-     1>evaluate.cpp(310): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(302) : 'i' の定義が無視されました。
-                 evaluate.cpp(195) : 'i' の定義が使用されました。
-     1>evaluate.cpp(312): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(302) : 'i' の定義が無視されました。
-                 evaluate.cpp(195) : 'i' の定義が使用されました。
-     1>evaluate.cpp(316): warning C4258: 'i' : for ループからの定義は無視されます。外側のスコープからの定義が使われます。
-                 evaluate.cpp(302) : 'i' の定義が無視されました。
-                 evaluate.cpp(195) : 'i' の定義が使用されました。
-         コードを生成中...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.lib" /MACHINE:X64 x64\Debug\evaluate.obj
          x64\Debug\feasibility.obj
@@ -47,10 +11,9 @@
          x64\Debug\main.obj
          x64\Debug\neighbour.obj
          x64\Debug\roster.obj
-         LINK : 前回のインクリメンタル リンクで C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
          NSP2018.vcxproj -> C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.exe
      1>プロジェクト "C:\Users\郁也\Desktop\NSP2018\NSP2018\NSP2018.vcxproj" (Build ターゲット) のビルドが完了しました。
 
 ビルドに成功しました。
 
-経過時間 00:00:07.19
+経過時間 00:00:04.72
