@@ -206,7 +206,7 @@ int main(void)
 		for (int count = 0; count <= 100000; count++) {
 
 
-			select_i_t(5, 5);
+			select_i_t(20, 20);
 			//if (count % 1000 == 0) { i_solution.output_value(); }
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
