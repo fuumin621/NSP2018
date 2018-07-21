@@ -59,7 +59,7 @@ int main(void)
 
 		//get_initial_solution();//‰Šú‰ğ¶¬
 		//‰Šú‰ğ“ü—Í
-		get_initial_solution2();//‰Šú‰ğ¶¬
+		get_initial_solution();//‰Šú‰ğ¶¬
 		//get_initial_example();
 		//i_solution.input_model(X);
 		i_solution.evaluate();
@@ -205,7 +205,7 @@ int main(void)
 
 		for (int count = 0; count <= 100000; count++) {
 
-			//two_change_Y2();
+
 			select_i_t(5, 5);
 			//if (count % 1000 == 0) { i_solution.output_value(); }
 			if (zantei.value > i_solution.value) {

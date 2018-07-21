@@ -14,27 +14,28 @@
 */
 
 //instance 15
-#define P 15//問題番号
+/*#define P 15//問題番号
 #define I 45
 #define T 42
 #define K 6//シフト番号（0～k-1)Kは休暇
 #define O 4//1ナースあたりのDayOFFの日数
 #define B 5
 #define TRY 1000//実行可能解生成のトライ回数上限
-
+*/
 
 //instance24
-/*#define P 24
+#define P 24
 #define I 150
 #define T 364
 #define K 32//シフト番号（0～k-1)Kは休暇
 #define O 36//1ナースあたりのDayOFFの日数
 #define B 28
 #define TRY 10//実行可能解生成のトライ回数上限
-*/
+
 
 void input_data();
 void get_initial_solution();
+void get_initial_solution2();
 void get_solution();
 void reset_nurse_solution(int i);
 
