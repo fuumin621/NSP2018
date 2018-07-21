@@ -252,7 +252,9 @@ int main(void)
 		for (int count = 0; count <= 100000; count++) {
 
 			two_change_Y2();
-			//if (count % 1000 == 0) { i_solution.output_value(); }
+			if (count % 1000 == 0) { 
+				printf("%d‰ñI—¹\n",count); 
+			}
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 
