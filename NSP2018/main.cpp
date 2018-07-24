@@ -38,9 +38,9 @@ int main(void)
 
 	
 
-	for (exp_count = 0; exp_count < 1; exp_count++) {
+	for (exp_count = 0; exp_count < 10; exp_count++) {
 
-		//srand(time(NULL));
+		srand(time(NULL));
 
 		start_clock = clock();
 
@@ -48,7 +48,8 @@ int main(void)
 		weight_S = 1;
 
 		input_data();//問題データ入力
-		//最適解入力
+
+		//最適解入力(デバッグ用)
 		get_solution();
 		i_solution.input_model(X);
 		i_solution.evaluate();
@@ -57,11 +58,11 @@ int main(void)
 		printf("saiteki_value = %lld\n", i_solution.value);
 
 
-		//get_initial_solution();//初期解生成
-		//初期解入力
-		get_initial_solution2();//初期解生成
+		
+		//初期解生成
 		//get_initial_example();
 		//i_solution.input_model(X);
+		get_initial_solution2();
 		i_solution.evaluate();
 		i_solution.output_value();
 		i_solution.output_roster(1);
@@ -72,7 +73,7 @@ int main(void)
 
 		
 		bool terminal;
-		/*do
+		do
 		{
 			terminal = one_change_N();
 
@@ -86,7 +87,7 @@ int main(void)
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
 		
-		output_initial();*/
+		output_initial();
 
 
 		//output_initial();
@@ -137,7 +138,8 @@ int main(void)
 		*/
 		
 		solution zantei = i_solution;
-		int select_nurse = 0;
+		
+		/*int select_nurse = 0;
 		for (select_nurse = 0; select_nurse < I; select_nurse++) {
 			i_solution.output_roster(0);
 			zantei = i_solution;
@@ -169,8 +171,8 @@ int main(void)
 		printf("zantei=%d\n", zantei.value);
 		//printf("i_solution.nurse_value[0]=%lld\n", i_solution.nurse_value[select_nurse]);
 		i_solution.output_roster(1);
-
-		do
+		*/
+		/*do
 		{
 			terminal = one_change_N();
 
@@ -185,7 +187,7 @@ int main(void)
 		i_solution.output_value();
 		zantei = i_solution;
 
-
+		*/
 		/*for (int count = 0; count <= 1000; count++) {
 
 
@@ -206,66 +208,19 @@ int main(void)
 		for (int count = 0; count <= 100000; count++) {
 
 			//two_change_Y2();
+			//one_change_Y();
+			
 			select_i_t(5, 5);
 			//if (count % 1000 == 0) { i_solution.output_value(); }
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
-
 			}
-
-
 		}
-			
-
-		/*printf("zantei=%d\n", zantei.value);
-		printf("終了\n");
-		/*for (int i = 0; i < 4; i++) {
-			printf("kinbou %d: count=%d,kaizen=%d\n", i, kinbou_count[i], kinbou_kaizen[i]);
-			}*/
-
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
 
 
-
-
-
-
-		/*for (int count = 0; count <= 100000; count++) {
-
-			two_change_Y2();
-			//if (count % 1000 == 0) { i_solution.output_value(); }
-			if (zantei.value > i_solution.value) {
-				zantei = i_solution;
-
-			}
-
-		}
-
-		i_solution = zantei;
-		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
-
-		
-		/*zantei = i_solution;
-		for (int count = 0; count <= 100000; count++) {
-
-			two_change_Y2();
-			if (count % 1000 == 0) { 
-				printf("%d回終了\n",count); 
-			}
-			if (zantei.value > i_solution.value) {
-				zantei = i_solution;
-
-			}
-
-		}
-
-		i_solution = zantei;
-		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
-		*/
 		do
 		{
 			terminal = one_change_N();
