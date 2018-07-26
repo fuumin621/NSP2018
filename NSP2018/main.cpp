@@ -38,9 +38,9 @@ int main(void)
 
 	
 
-	for (exp_count = 0; exp_count < 10; exp_count++) {
+	for (exp_count = 0; exp_count < 1; exp_count++) {
 
-		srand(time(NULL));
+		//srand(time(NULL));
 
 		start_clock = clock();
 
@@ -205,20 +205,15 @@ int main(void)
 		//printf("i_solution.nurse_value[0]=%lld\n", i_solution.nurse_value[select_nurse]);
 		//i_solution.output_roster(2);
 
-		for (int count = 0; count <= 100000; count++) {
-
-			//two_change_Y2();
-			//one_change_Y();
-			
-			select_i_t(5, 5);
-			//if (count % 1000 == 0) { i_solution.output_value(); }
+		for (int count = 0; count <= 1000000; count++) {
+			select_i_t(7, 7);
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 			}
 		}
 		i_solution = zantei;
 		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
+		printf("zantei1=%d\n", zantei.value);
 
 
 		do

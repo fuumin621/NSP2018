@@ -771,6 +771,66 @@ void select_i_t(int select_i, int select_t)
 
 }
 
+void select_i_t_k(int select_i, int select_t,int select_k)
+{
+	solution s = i_solution;
+	long long zantei = NULL;
+
+	int best_i, best_t, best_k;
+
+	int RI[I]; shuffle(RI, I);
+	int RT[T]; shuffle(RT, T);
+	int RK[K + 1]; shuffle(RK, K + 1);
+
+	int i, t,k;
+	for (int ii = 0; ii < select_i; ii++) {
+		i = RI[ii];
+		for (int tt = 0; tt < select_t; tt++) {
+			t = RT[tt];
+			for (int kk = 0; kk <select_k; kk++) {
+				k = RK[kk];
+				if (s.X[i][t] != k) {
+					//s.X[i][t] = k;
+					//s.evaluate();
+					s.modify(i, t, k);
+					if (zantei == NULL)//ŒðŠ·‰Â”\‚Í‚¶‚ß‚Ä‚Ì‚Æ‚«‚»‚ê‚ðŽb’è•]‰¿’l‚Ì‰Šú’l‚ÉÝ’è
+					{
+						zantei = s.value;
+						best_t = t;
+						best_i = i;
+						best_k = k;
+					}
+
+					if (s.value < zantei)
+					{
+						zantei = s.value;
+						best_t = t;
+						best_i = i;
+						best_k = k;
+					}
+
+					if (s.value == zantei)
+					{
+						if (rand() % 2 == 0) {
+							zantei = s.value;
+							best_t = t;
+							best_i = i;
+							best_k = k;
+						}
+					}
+
+					s = i_solution;
+				}
+			}
+		}
+	}
+	//i_solution.X[best_i][best_t] = best_k;
+	//i_solution.evaluate();
+	i_solution.modify(best_i, best_t, best_k);
+
+
+}
+
 void one_select_i_t(int i, int select_t)
 {
 	solution s = i_solution;

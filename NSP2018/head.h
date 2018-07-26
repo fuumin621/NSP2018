@@ -57,6 +57,7 @@ void two_change_Y2_select(int select_i);
 void select_i_t(int select_i, int select_t);
 void one_ex_rand_i(int i);
 void one_select_i_t(int i, int select_t);
+void select_i_t_k(int select_i, int select_t, int select_k);
 
 extern int weight_H;
 extern int weight_S;
