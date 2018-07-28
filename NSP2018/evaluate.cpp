@@ -125,8 +125,8 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 
 
 	//‹Î–±‰ñ”
-	save_nurse_kinmusu[i][k_before]--;
-	save_nurse_kinmusu[i][k]++;
+	save_nurse_kinmusu[i][k_before]= save_nurse_kinmusu[i][k_before]-1;
+	save_nurse_kinmusu[i][k]= save_nurse_kinmusu[i][k]+1;
 	nurse_Score[i][5] = 0;
 	for (int k = 0; k < K; k++) {
 		if (save_nurse_kinmusu[i][k]>nurse[i].max_kinmusu[k]) {
@@ -163,13 +163,19 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 	//‚»‚Ì“ú‚Ì§–ñ‚Ì•]‰¿’lXV
 	Cover_error(t);
 
-
-
-	//‰Šú‰»
+	//ƒi[ƒX‡Œv
+	nurse_value[i] = 0;
+	for (int j = 0; j<9; j++) {
+		nurse_value[i] += nurse_Score[i][j] * weight_H;
+	}
+	for (int j = 9; j <= 10; j++) {
+		nurse_value[i] += nurse_Score[i][j] * weight_S;
+	}
+	
+	//‘S‘Ì‡Œv(—v‰ü—Ç)
 	value = 0;
 	for (int j = 0; j < 12; j++) { Score[j] = 0; }
 
-	//§–ñ‚²‚Æ‚É‡Œv
 	for (int i = 0; i < I; i++) {
 		for (int j = 0; j < 11; j++) {
 			Score[j] += nurse_Score[i][j];
@@ -177,15 +183,7 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 	}
 	for (int t = 0; t < T; t++) { Score[11] += save_Cover_error[t]; }
 
-	//‡Œv
-	nurse_value[i] = 0;
-	for (int j = 0; j<9; j++) {
-		nurse_value[i] += nurse_Score[i][j] * weight_H;
-	}
-
-	for (int j = 9; j <= 10; j++) {
-		nurse_value[i] += nurse_Score[i][j] * weight_S;
-	}
+	
 
 	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
@@ -324,12 +322,15 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 void solution::modify_temp(int i, int t)
 {
 
-	nurse_evaluate(i);
-	Cover_error(t);
-
 	//‰Šú‰»
 	value = 0;
-	for (int j = 0; j < 12; j++) { Score[j] = 0; }
+	for (int j = 0; j < 12; j++)
+	{ Score[j] = 0; }
+
+	//ŠeŠÅŒìt(or“ú‚É‚¿)‚Ì•]‰¿’lŒvZ
+	nurse_evaluate(i); 
+	Cover_error(t); 
+
 
 	//§–ñ‚²‚Æ‚É‡Œv
 	for (int i = 0; i < I; i++) {
@@ -343,3 +344,4 @@ void solution::modify_temp(int i, int t)
 	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
 }
+

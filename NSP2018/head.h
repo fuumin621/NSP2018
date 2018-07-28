@@ -22,7 +22,6 @@
 #define B 5
 #define TRY 1000//実行可能解生成のトライ回数上限
 
-
 //instance24
 /*#define P 24
 #define I 150

@@ -60,20 +60,20 @@ int main(void)
 
 		
 		//‰Šú‰ğ¶¬
-		//get_initial_example();
-		//i_solution.input_model(X);
-		get_initial_solution2();
+		get_initial_example();
+		i_solution.input_model(X);
+		//get_initial_solution2();
 		i_solution.evaluate();
 		i_solution.output_value();
 		i_solution.output_roster(1);
 		printf("initial_value = %lld\n", i_solution.value);
-		output_initial();
+		//output_initial();
 
 
 
 		
 		bool terminal;
-		do
+		/*do
 		{
 			terminal = one_change_N();
 
@@ -86,12 +86,9 @@ int main(void)
 
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
+		*/
 		
-		output_initial();
-
-
-		//output_initial();
-
+		
 		/*int kinbou_kaizen[4];
 		int kinbou_count[4];
 		for (int i = 0; i < 4; i++) {
@@ -205,18 +202,34 @@ int main(void)
 		//printf("i_solution.nurse_value[0]=%lld\n", i_solution.nurse_value[select_nurse]);
 		//i_solution.output_roster(2);
 
-		for (int count = 0; count <= 1000000; count++) {
-			select_i_t(7, 7);
+		solution temp;
+		for (int count = 0; count <= 100000; count++) {
+			one_change_Y();
+			//select_i_t(5, 5);
+			temp = i_solution;
+			temp.evaluate();
+
+
+			if (temp.value != i_solution.value) {
+				printf("count=%d\n", count);
+				temp.output_roster(0);
+				i_solution.output_roster(1);
+			}
+
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 			}
+		    zantei.output_value();
+			
+			
 		}
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei1=%d\n", zantei.value);
-
-
-		do
+		i_solution.output_roster(0);
+		
+		
+		/*do
 		{
 			terminal = one_change_N();
 
@@ -230,19 +243,35 @@ int main(void)
 			}
 
 		} while (terminal);
+		*/
+		
+		/*i_solution.output_value();
+		i_solution.output_roster(0);
+		printf("zantei=%d\n", i_solution.value);
 
+		i_solution.X[0][0] = 5;
+		//i_solution.evaluate();
+		i_solution.modify_temp(0, 0);
+		i_solution.output_roster(0);
+		*/
 
-		i_solution = zantei;
+		//printf("nurse27‚Ì˜A‹ÎÅ‘åˆá”½Score%d\n", i_solution.nurse_Score[27][0]);
+		//printf("nurse27‚Ì˜A‹ÎÅ‘åˆá”½”%d\n", i_solution.save_nurse_maxRenkin[27]);
+
+		/*printf("nurse27‚Ì‹Î–±ˆá”½%d\n", i_solution.nurse_Score[27][5]);
+		for (int k = 0; k < K; k++) {
+			printf("nurse27‚Ì‹Î–±%d‚Ì‡Œv%d\n", k, i_solution.save_nurse_kinmusu[27][k]);
+		}*/
+		i_solution.evaluate();
 		i_solution.output_value();
-		printf("zantei=%d\n", zantei.value);
+		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_roster(1);
-
-
-		printf("zantei=%d\n", zantei.value);
+		
 
 		end_clock = clock();
 		printf("Caluculation Time :%lf\n", (double)(end_clock - start_clock) / CLOCKS_PER_SEC);
 		
+		output_initial();
 	}
 	
 }
