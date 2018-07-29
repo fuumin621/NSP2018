@@ -52,10 +52,10 @@ void one_change_Y()
 	for (int i = 0; i < I; i++) {
 		for (int k = 0; k <= K; k++) {
 			if (s.X[i][t] != k) {
-				s.X[i][t] = k;
+				//s.X[i][t] = k;
 				//s.evaluate();
-				s.modify_temp(i, t);
-				//s.modify(i, t, k);
+				//s.modify_temp(i, t);
+				s.modify(i, t, k);
 				if (zantei == NULL)//ŒðŠ·‰Â”\‚Í‚¶‚ß‚Ä‚Ì‚Æ‚«‚»‚ê‚ðŽb’è•]‰¿’l‚Ì‰Šú’l‚ÉÝ’è
 				{
 					zantei = s.value;
@@ -86,13 +86,13 @@ void one_change_Y()
 			}
 		}
 	}
-	printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
-	i_solution.X[best_i][best_t] = best_k;
+	//printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
+	//i_solution.X[best_i][best_t] = best_k;
 	
 	
-	i_solution.modify_temp(best_i,best_t);
+	//i_solution.modify_temp(best_i,best_t);
 	//i_solution.evaluate();
-	//i_solution.modify(best_i, best_t, best_k);
+	i_solution.modify(best_i, best_t, best_k);
 	
 	
 }
@@ -735,11 +735,11 @@ void select_i_t(int select_i, int select_t)
 			t = RT[tt];
 			for (int k = 0; k <= K; k++) {
 				if (s.X[i][t] != k) {
-					s.X[i][t] = k;
-					s.modify_temp(i, t);
+					//s.X[i][t] = k;
+					//s.modify_temp(i, t);
 					//s.evaluate();
 
-					//s.modify(i, t, k);
+					s.modify(i, t, k);
 					if (zantei == NULL)//ŒðŠ·‰Â”\‚Í‚¶‚ß‚Ä‚Ì‚Æ‚«‚»‚ê‚ðŽb’è•]‰¿’l‚Ì‰Šú’l‚ÉÝ’è
 					{
 						zantei = s.value;
@@ -761,11 +761,11 @@ void select_i_t(int select_i, int select_t)
 			}
 		}
 	}
-	i_solution.X[best_i][best_t] = best_k;
-	i_solution.modify_temp(best_i, best_t);
+	//i_solution.X[best_i][best_t] = best_k;
+	//i_solution.modify_temp(best_i, best_t);
 	//i_solution.evaluate();
 
-	//i_solution.modify(best_i, best_t, best_k);
+	i_solution.modify(best_i, best_t, best_k);
 
 
 }
@@ -933,6 +933,68 @@ void half_change_Y()
 	//printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
 }
 
+
+void imp_worst_day(int select_i) {
+	solution s = i_solution;
+	long long zantei = NULL;
+	int t_worst=0;
+	int worst=0;
+	for (int t = 0; t < T; t++) {
+		if (worst < i_solution.save_Cover_error[t]) {
+			t_worst = t;
+			worst = i_solution.save_Cover_error[t];
+		}
+	}
+
+	int RI[I]; shuffle(RI, I);
+	int best_i, best_t, best_k;
+	for (int ii = 0; ii < select_i; ii++) {
+		int i = RI[ii];
+		for (int k = 0; k <= K; k++) {
+			if (s.X[i][t_worst] != k) {
+				//s.X[i][t] = k;
+				//s.evaluate();
+				//s.modify_temp(i, t);
+				s.modify(i, t_worst, k);
+				if (zantei == NULL)//ŒðŠ·‰Â”\‚Í‚¶‚ß‚Ä‚Ì‚Æ‚«‚»‚ê‚ðŽb’è•]‰¿’l‚Ì‰Šú’l‚ÉÝ’è
+				{
+					zantei = s.value;
+					best_t = t_worst;
+					best_i = i;
+					best_k = k;
+				}
+
+				if (s.value < zantei)
+				{
+					zantei = s.value;
+					best_t = t_worst;
+					best_i = i;
+					best_k = k;
+				}
+
+				/*if (s.value == zantei)
+				{
+				if (rand() % 2 == 0) {
+				zantei = s.value;
+				best_t = t;
+				best_i = i;
+				best_k = k;
+				}
+				}
+				*/
+				s = i_solution;
+			}
+		}
+	}
+	//printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
+	//i_solution.X[best_i][best_t] = best_k;
+
+
+	//i_solution.modify_temp(best_i,best_t);
+	//i_solution.evaluate();
+	i_solution.modify(best_i, best_t, best_k);
+
+}
 
 
 void solution::mutation(int num)

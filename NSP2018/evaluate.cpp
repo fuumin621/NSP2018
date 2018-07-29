@@ -81,12 +81,19 @@ void solution::Cover_error(int t)
 	save_Cover_error[t] = count;
 }
 
-void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œã‚Â‚­‚é)
+void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV
 {
 	int k_before = X[i][t];//•ÏX‘O‚Ì‹Î–±
 	X[i][t] = k;//‹Î–±•ÏX
 
-	for (int j = 0; j < 12; j++) {
+	//‚à‚Æ‚Ì•]‰¿’l‚Æ‘ÎÛƒi[ƒX‚Ì•]‰¿’l‚Ì·•ª‚ğ•Û‘¶
+	int temp_Score[12];
+	for (int j = 0; j < 11; j++) { temp_Score[j] = Score[j]-nurse_Score[i][j]; }
+	temp_Score[11] = Score[11] - save_Cover_error[t];
+
+
+	//ŠÅŒìt•]‰¿’l‰Šú‰»
+	for (int j = 0; j < 11; j++) {
 		nurse_Score[i][j] = 0;
 	}
 
@@ -125,8 +132,8 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 
 
 	//‹Î–±‰ñ”
-	save_nurse_kinmusu[i][k_before]= save_nurse_kinmusu[i][k_before]-1;
-	save_nurse_kinmusu[i][k]= save_nurse_kinmusu[i][k]+1;
+	if (k_before != K) { save_nurse_kinmusu[i][k_before] = save_nurse_kinmusu[i][k_before] - 1; }
+	if (k != K) { save_nurse_kinmusu[i][k] = save_nurse_kinmusu[i][k] + 1; }
 	nurse_Score[i][5] = 0;
 	for (int k = 0; k < K; k++) {
 		if (save_nurse_kinmusu[i][k]>nurse[i].max_kinmusu[k]) {
@@ -148,16 +155,16 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 	before_flag = (nurse[i].ReqON_type[t] != -1 && (k_before != nurse[i].ReqON_type[t]));
 	after_flag = (nurse[i].ReqON_type[t] != -1 && (k != nurse[i].ReqON_type[t]));
 	if (before_flag == after_flag) {}
-	else if (before_flag > after_flag) { save_nurse_ON[i]--; }
-	else { save_nurse_ON[i]++; }
+	else if (before_flag > after_flag) { save_nurse_ON[i]-= nurse[i].ReqON_weight[t]; }
+	else { save_nurse_ON[i]+= nurse[i].ReqON_weight[t]; }
 	nurse_Score[i][9] = save_nurse_ON[i];
 
 	//OFFƒŠƒNƒGƒXƒg
 	before_flag = (nurse[i].ReqOFF_type[t] != -1 && (k_before == nurse[i].ReqOFF_type[t]));
 	after_flag = (nurse[i].ReqOFF_type[t] != -1 && (k == nurse[i].ReqOFF_type[t]));
 	if (before_flag == after_flag) {}
-	else if (before_flag > after_flag) { save_nurse_OFF[i]--; }
-	else { save_nurse_OFF[i]++; }
+	else if (before_flag > after_flag) { save_nurse_OFF[i]-= nurse[i].ReqOFF_weight[t]; }
+	else { save_nurse_OFF[i]+= nurse[i].ReqOFF_weight[t]; }
 	nurse_Score[i][10] = save_nurse_OFF[i];
 
 	//‚»‚Ì“ú‚Ì§–ñ‚Ì•]‰¿’lXV
@@ -173,7 +180,7 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 	}
 	
 	//‘S‘Ì‡Œv(—v‰ü—Ç)
-	value = 0;
+	/*value = 0;
 	for (int j = 0; j < 12; j++) { Score[j] = 0; }
 
 	for (int i = 0; i < I; i++) {
@@ -182,13 +189,17 @@ void solution::modify(int i, int t, int k)//X[i][t]‚ğk‚É•ÏX‚µA•]‰¿’l‚àXV(¡Œ
 		}
 	}
 	for (int t = 0; t < T; t++) { Score[11] += save_Cover_error[t]; }
+	*/
+	for (int j = 0; j < 11; j++) { Score[j] = temp_Score[j] + nurse_Score[i][j]; }
+	Score[11] = temp_Score[11] + save_Cover_error[t];
 
 	
-
+	value = 0;
 	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
 
 }
+
 
 void solution::modify_i_2t(int i, int tt[2], int kk[2])
 {
@@ -199,7 +210,14 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 	X[i][tt[0]] = kk[0];//‹Î–±•ÏX
 	X[i][tt[1]] = kk[1];
 
-	for (int j = 0; j < 12; j++) {
+
+	//‚à‚Æ‚Ì•]‰¿’l‚Æ‘ÎÛƒi[ƒX‚Ì•]‰¿’l‚Ì·•ª‚ğ•Û‘¶
+	int temp_Score[12];
+	for (int j = 0; j < 11; j++) { temp_Score[j] = Score[j] - nurse_Score[i][j]; }
+	temp_Score[11] = Score[11] - save_Cover_error[tt[0]]- save_Cover_error[tt[1]];
+
+
+	for (int j = 0; j < 11; j++) {
 		nurse_Score[i][j] = 0;
 	}
 
@@ -239,8 +257,8 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 		else { save_nurse_DayOFF[i]++; }
 
 		//‹Î–±‰ñ”
-		save_nurse_kinmusu[i][k_before[c]]--;
-		save_nurse_kinmusu[i][kk[c]]++;
+		if (k_before[c] != K) { save_nurse_kinmusu[i][k_before[c]]--; }
+		if (kk[c] != K) { save_nurse_kinmusu[i][kk[c]]++; }
 
 
 		//‹Î–±ŠÔ
@@ -253,8 +271,8 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 		before_flag = (nurse[i].ReqON_type[tt[c]] != -1 && (k_before[c] != nurse[i].ReqON_type[tt[c]]));
 		after_flag = (nurse[i].ReqON_type[tt[c]] != -1 && (kk[c] != nurse[i].ReqON_type[tt[c]]));
 		if (before_flag == after_flag) {}
-		else if (before_flag > after_flag) { save_nurse_ON[i]--; }
-		else { save_nurse_ON[i]++; }
+		else if (before_flag > after_flag) { save_nurse_ON[i]-=nurse[i].ReqON_weight[tt[c]]; }
+		else { save_nurse_ON[i]+= nurse[i].ReqON_weight[tt[c]]; }
 
 
 
@@ -262,8 +280,8 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 		before_flag = (nurse[i].ReqOFF_type[tt[c]] != -1 && (k_before[c] == nurse[i].ReqOFF_type[tt[c]]));
 		after_flag = (nurse[i].ReqOFF_type[tt[c]] != -1 && (kk[c] == nurse[i].ReqOFF_type[tt[c]]));
 		if (before_flag == after_flag) {}
-		else if (before_flag > after_flag) { save_nurse_OFF[i]--; }
-		else { save_nurse_OFF[i]++; }
+		else if (before_flag > after_flag) { save_nurse_OFF[i]-= nurse[i].ReqOFF_weight[tt[c]]; }
+		else { save_nurse_OFF[i]+= nurse[i].ReqOFF_weight[tt[c]]; }
 
 
 		c++;
@@ -293,7 +311,7 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 
 
 	//‰Šú‰»
-	value = 0;
+	
 	for (int j = 0; j < 12; j++) { Score[j] = 0; }
 
 	//§–ñ‚²‚Æ‚É‡Œv
@@ -314,6 +332,12 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 		nurse_value[i] += nurse_Score[i][j] * weight_S;
 	}
 
+
+	for (int j = 0; j < 11; j++) { Score[j] = temp_Score[j] + nurse_Score[i][j]; }
+	Score[11] = temp_Score[11] + save_Cover_error[tt[0]]+save_Cover_error[tt[1]];
+
+
+	value = 0;
 	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
 
@@ -330,12 +354,7 @@ void solution::modify_temp(int i, int t)
 	//ŠeŠÅŒìt(or“ú‚É‚¿)‚Ì•]‰¿’lŒvZ
 	
 	nurse_evaluate(i); 
-	
-
-
 	Cover_error(t); 
-	
-	
 
 	//§–ñ‚²‚Æ‚É‡Œv
 	for (int i = 0; i < I; i++) {

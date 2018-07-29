@@ -79,36 +79,11 @@ void solution::nurse_evaluate(int i)
 	}
 	
 	*/
-	
-	if (debug_flag == true && p_count == 4 )
-	{
-		printf("1‚©‚¢‚ßi=%d\n",i);
-		printf("1‚©‚¢‚ßi_solution.nurse_Score[27][0] =%d\n", i_solution.nurse_Score[27][0]);
-	}
 
-
-
-
-	for (int j = 0; j < 12; j++) {
+	for (int j = 0; j < 11; j++) {
 		nurse_Score[i][j] = 0;
-		if (debug_flag == true && p_count == 4){
-			printf("i=%d,j=%d,nurse_score[27][0]=%d\n", i, j, nurse_Score[27][0]);
-		}
 	}
 
-
-
-
-	if (debug_flag == true && p_count == 4)
-	{
-		printf("2‚©‚¢‚ßi=%d\n", i);
-		printf("2‚©‚¢‚ßi_solution.nurse_Score[27][0] =%d\n", i_solution.nurse_Score[27][0]);
-	}
-	if (debug_flag == true && p_count == 4 && i_solution.nurse_Score[27][0] == 0)
-	{
-		printf("zero‚É‚È‚Á‚½II\n");
-		debug_flag = false;
-	}
 	
 	//â‘Î§–ñ
 	nurse_maxRenkin(i);
