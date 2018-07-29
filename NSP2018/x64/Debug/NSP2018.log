@@ -1,12 +1,20 @@
-﻿  main.cpp
-c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(228): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(228): note: 書式文字列に '%lld' を使用することをお勧めします
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(228): note: 書式文字列に '%Id' を使用することをお勧めします
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(228): note: 書式文字列に '%I64d' を使用することをお勧めします
-c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(267): warning C4477: 'printf' : 書式文字列 '%d' には、型 'int' の引数が必要ですが、可変個引数 1 は型 '__int64' です
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(267): note: 書式文字列に '%lld' を使用することをお勧めします
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(267): note: 書式文字列に '%Id' を使用することをお勧めします
-  c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(267): note: 書式文字列に '%I64d' を使用することをお勧めします
-c:\users\msysstu022\desktop\nsp2018\nsp2018\main.cpp(75): warning C4101: 'terminal': ローカル変数は 1 度も使われていません。
-  NSP2018.vcxproj -> C:\Users\msysstu022\Desktop\NSP2018\x64\Debug\NSP2018.exe
-  NSP2018.vcxproj -> C:\Users\msysstu022\Desktop\NSP2018\x64\Debug\NSP2018.pdb (Partial PDB)
+﻿2018/07/29 13:01:43 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\郁也\Desktop\NSP2018\NSP2018\NSP2018.vcxproj" (Build ターゲット)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt feasibility.cpp
+         feasibility.cpp
+     1>feasibility.cpp(186): warning C4244: '初期化中' : '__int64' から 'int' への変換です。データが失われる可能性があります。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.lib" /MACHINE:X64 x64\Debug\evaluate.obj
+         x64\Debug\feasibility.obj
+         x64\Debug\initial.obj
+         x64\Debug\input.obj
+         x64\Debug\main.obj
+         x64\Debug\neighbour.obj
+         x64\Debug\roster.obj
+         NSP2018.vcxproj -> C:\Users\郁也\Desktop\NSP2018\x64\Debug\NSP2018.exe
+     1>プロジェクト "C:\Users\郁也\Desktop\NSP2018\NSP2018\NSP2018.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:00.69

@@ -64,6 +64,8 @@ extern FILE *fp;
 extern char FileName[128];
 extern clock_t start_clock, end_clock;
 extern int exp_count;
+extern int p_count;
+extern bool debug_flag;
 
 
 extern char nurse_name[I][5];
@@ -74,6 +76,7 @@ extern int Cover_Weight[T][K][2];//0はunder,1はoverのペナルティ重み
 extern int Shift_Time[K];
 extern bool BWP_data[K + 1][K + 1];//1つ目のシフト→2つ目のシフトが禁止勤務パターンならtrue、そうでないならfalse
 extern int X[I][T];
+
 
 
 struct basic_data

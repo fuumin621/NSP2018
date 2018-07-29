@@ -12,6 +12,9 @@ void get_solution();
 clock_t start_clock, end_clock;
 
 int exp_count;
+int p_count;
+bool debug_flag=true;
+
 int weight_H;
 int weight_S;
 struct basic_data nurse[I];
@@ -23,6 +26,7 @@ bool BWP_data[K + 1][K + 1];//1つ目のシフト→2つ目のシフトが禁止勤務パターンなら
 int X[I][T];
 char nurse_name[I][5];
 char shift_name[K + 1][5];
+
 
 void input_data()
 {

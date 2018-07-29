@@ -321,16 +321,21 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 
 void solution::modify_temp(int i, int t)
 {
-
+	
 	//‰Šú‰»
 	value = 0;
 	for (int j = 0; j < 12; j++)
 	{ Score[j] = 0; }
 
 	//ŠeŠÅŒìt(or“ú‚É‚¿)‚Ì•]‰¿’lŒvZ
+	
 	nurse_evaluate(i); 
-	Cover_error(t); 
+	
 
+
+	Cover_error(t); 
+	
+	
 
 	//§–ñ‚²‚Æ‚É‡Œv
 	for (int i = 0; i < I; i++) {

@@ -72,7 +72,7 @@ void one_change_Y()
 					best_k = k;
 				}
 
-				if (s.value == zantei)
+				/*if (s.value == zantei)
 				{
 					if (rand() % 2 == 0) {
 						zantei = s.value;
@@ -81,17 +81,20 @@ void one_change_Y()
 						best_k = k;
 					}
 				}
-
+				*/
 				s = i_solution;
 			}
 		}
 	}
+	printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
 	i_solution.X[best_i][best_t] = best_k;
+	
+	
 	i_solution.modify_temp(best_i,best_t);
 	//i_solution.evaluate();
 	//i_solution.modify(best_i, best_t, best_k);
-
-	//printf("i=%d,t=%d,k=%d\n", best_i, best_t, best_k);
+	
+	
 }
 
 bool i_two_changeN()

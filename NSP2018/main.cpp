@@ -203,17 +203,29 @@ int main(void)
 		//i_solution.output_roster(2);
 
 		solution temp;
-		for (int count = 0; count <= 100000; count++) {
+		for (p_count = 0; p_count <= 5; p_count++) {
+			printf("p_count=%d\n", p_count);
 			one_change_Y();
 			//select_i_t(5, 5);
 			temp = i_solution;
-			temp.evaluate();
-
-
-			if (temp.value != i_solution.value) {
-				printf("count=%d\n", count);
-				temp.output_roster(0);
-				i_solution.output_roster(1);
+			//temp.evaluate();
+			
+			
+			if (p_count==4) {
+				
+				temp.output_roster(11);
+				printf("temp=%d\n", temp.value);
+				i_solution.output_roster(10);
+				printf("i_solution=%d\n", i_solution.value);
+				
+			}
+			if (p_count == 5) {
+				
+				temp.output_roster(21);
+				i_solution.output_roster(20);
+				printf("temp=%d\n", temp.value);
+				printf("i_solution=%d\n", i_solution.value);
+				
 			}
 
 			if (zantei.value > i_solution.value) {
@@ -226,7 +238,7 @@ int main(void)
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei1=%d\n", zantei.value);
-		i_solution.output_roster(0);
+		//i_solution.output_roster(0);
 		
 		
 		/*do
@@ -265,7 +277,7 @@ int main(void)
 		i_solution.evaluate();
 		i_solution.output_value();
 		printf("zantei=%d\n", i_solution.value);
-		i_solution.output_roster(1);
+		//i_solution.output_roster(1);
 		
 
 		end_clock = clock();
