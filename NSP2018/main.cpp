@@ -48,7 +48,6 @@ int main(void)
 		weight_S = 1;
 
 		input_data();//問題データ入力
-
 		//最適解入力(デバッグ用)
 		get_solution();
 		i_solution.input_model(X);
@@ -56,7 +55,7 @@ int main(void)
 		i_solution.output_value();
 		i_solution.output_roster(1);
 		printf("saiteki_value = %lld\n", i_solution.value);
-		
+	
 		//初期解生成
 		//get_initial_example();
 		//i_solution.input_model(X);
@@ -76,7 +75,7 @@ int main(void)
 
 			if (terminal)
 			{
-				printf("成功ですの\n");
+				//printf("成功ですの\n");
 			}
 
 		} while (terminal);
@@ -89,7 +88,7 @@ int main(void)
 		
 		//近傍探索開始
 		solution zantei = i_solution;
-		for (p_count = 0; p_count <= 10000; p_count++) {
+		for (p_count = 0; p_count <= 100000; p_count++) {
 			//one_change_Y();
 			select_i_t(5, 5);
 			//two_change_Y2();
@@ -97,7 +96,7 @@ int main(void)
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 			}
-			if (p_count % 100 == 0) { zantei.output_value(); }
+			//if (p_count % 100 == 0) { zantei.output_value(); }
 			
 			
 		}
@@ -113,7 +112,7 @@ int main(void)
 
 			if (terminal)
 			{
-				printf("成功だぜ\n");
+				//printf("成功だぜ\n");
 				if (zantei.value > i_solution.value) {
 					zantei = i_solution;
 				}
@@ -133,11 +132,13 @@ int main(void)
 
 
 
+
 		//ここから追加
-		/*zantei = i_solution;
+		
+		zantei = i_solution;
 		for (p_count = 0; p_count <= 100; p_count++) {
 			
-			imp_worst_day(5);
+			imp_worst_day(20);
 
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
@@ -149,7 +150,13 @@ int main(void)
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
-		i_solution.output_roster(0);*/
+		i_solution.output_roster(0);
+
+		
+	
+
+
+
 
 	}
 	

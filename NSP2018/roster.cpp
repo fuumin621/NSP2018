@@ -46,6 +46,11 @@ void solution::output_roster(int mode)
 		for (int x = 0; x < 11; x++) {
 			fprintf(fp, "%d,", nurse_Score[i][x]);
 		}
+
+		/*for (int k = 0; k < K; k++) {
+			fprintf(fp, "%d,", save_nurse_kinmusu[i][k]);
+		}
+		fprintf(fp, "%d,", save_nurse_Time[i]);*/
 		
 		fprintf(fp, "\n");
 	}
