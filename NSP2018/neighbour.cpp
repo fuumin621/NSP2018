@@ -996,6 +996,58 @@ void imp_worst_day(int select_i) {
 
 }
 
+void reset_day() {
+	int t_worst = 0;
+	int worst = 0;
+	for (int t = 0; t < T; t++) {
+		if (worst < i_solution.save_Cover_error[t]) {
+			t_worst = t;
+			worst = i_solution.save_Cover_error[t];
+		}
+	}
+	int t = t_worst;
+	solution s = i_solution;
+	//対象の日すべてランダムに初期化
+	for (int i = 0; i < I; i++) {
+		s.X[i][t] = rand()%(K+1);
+	}
+	s.evaluate();
+
+	//看護師をシャッフル
+	
+	printf("worst_day=%d\n", t);
+	int RI[I]; shuffle(RI, I);
+	int i;
+	for (int ii = 0; ii < I; ii++) {
+		i = RI[ii];
+		if (nurse[i].DaysOFF[t]) 
+		{
+			s.X[i][t] = K;
+			continue;
+		}
+		solution temp_sol = s;
+		int best_k = temp_sol.X[i][t];
+		long long best_value = temp_sol.value;
+		
+		int RK[K + 1]; shuffle(RK, K + 1);
+		for (int kk = 0; kk < K+1; kk++) {
+			int k = RK[kk];
+			temp_sol.X[i][t] = k;
+			temp_sol.evaluate();
+			if (temp_sol.value < best_value) {
+				best_k = k;
+				best_value = temp_sol.value;
+			}
+			temp_sol = s;
+		}
+		printf("best_i=%d,best_k=%d\n", i, best_k);
+		s.X[i][t] = best_k;
+		s.evaluate();
+	}
+	i_solution = s;
+	
+}
+
 
 void solution::mutation(int num)
 {

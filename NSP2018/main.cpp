@@ -104,6 +104,10 @@ int main(void)
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
 
+
+
+
+
 		
 		//ç≈èIíTçı
 		do
@@ -119,7 +123,7 @@ int main(void)
 			}
 
 		} while (terminal);
-		
+
 		
 		i_solution.output_value();
 		i_solution.output_roster(0);
@@ -133,30 +137,38 @@ int main(void)
 
 
 
+
+
 		//Ç±Ç±Ç©ÇÁí«â¡
-		
+		printf("resetäJén\n");
+		reset_day();
+		reset_day();
+		reset_day();
+		i_solution.output_value();
+		i_solution.output_roster(1);
+		printf("zantei=%d\n", i_solution.value);
+
+
+
+
+
 		zantei = i_solution;
-		for (p_count = 0; p_count <= 100; p_count++) {
-			
-			imp_worst_day(20);
+		for (p_count = 0; p_count <= 100000; p_count++) {
+			//one_change_Y();
+			select_i_t(5, 5);
+			//two_change_Y2();
 
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 			}
-			 i_solution.output_value(); 
+			//if (p_count % 100 == 0) { zantei.output_value(); }
 
 
 		}
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
-		i_solution.output_roster(0);
-
-		
-	
-
-
-
+		i_solution.output_roster(2);
 
 	}
 	

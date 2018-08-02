@@ -39,7 +39,8 @@ void solution::output_roster(int mode)
 		//fprintf(fp, "%s,", nurse_name[i]);
 		fprintf(fp, "%d,",i);
 		for (int t = 0; t < T; t++) {
-			fprintf(fp, "%s,", shift_name[X[i][t]]);
+			//fprintf(fp, "%s,", shift_name[X[i][t]]);
+			fprintf(fp, "%d,", X[i][t]);
 		}
 		fprintf(fp, "%lld,", nurse_value[i]);
 
