@@ -14,6 +14,7 @@
 */
 
 //instance 15
+
 #define P 15//問題番号
 #define I 45
 #define T 42
@@ -40,6 +41,38 @@
 #define K 3//シフト番号（0～k-1)Kは休暇
 #define O 8//1ナースあたりのDayOFFの日数
 #define B 2
+#define TRY 1000//実行可能解生成のトライ回数上限
+*/
+
+
+//instance 19
+/*#define P 19//問題番号
+#define I 40
+#define T 84
+#define K 5//シフト番号（0～k-1)Kは休暇
+#define O 8//1ナースあたりのDayOFFの日数
+#define B 4
+#define TRY 1000//実行可能解生成のトライ回数上限
+*/
+
+//instance 20
+/*#define P 20//問題番号
+#define I 50
+#define T 182
+#define K 6//シフト番号（0～k-1)Kは休暇
+#define O 18//1ナースあたりのDayOFFの日数
+#define B 4
+#define TRY 1000//実行可能解生成のトライ回数上限
+*/
+
+
+//instance 22
+/*#define P 22//問題番号
+#define I 50
+#define T 364
+#define K 10//シフト番号（0～k-1)Kは休暇
+#define O 36//1ナースあたりのDayOFFの日数
+#define B 9
 #define TRY 1000//実行可能解生成のトライ回数上限
 */
 
@@ -80,6 +113,7 @@ void one_select_i_t(int i, int select_t);
 void select_i_t_k(int select_i, int select_t, int select_k);
 void imp_worst_day(int select_i);
 void reset_day();
+void reset_day2();
 
 
 extern int weight_H;

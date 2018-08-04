@@ -1048,6 +1048,38 @@ void reset_day() {
 	
 }
 
+void reset_day2() {
+	int t_worst = 0;
+	int worst = 0;
+	for (int t = 0; t < T; t++) {
+		if (worst < i_solution.save_Cover_error[t]) {
+			t_worst = t;
+			worst = i_solution.save_Cover_error[t];
+		}
+	}
+	int t = t_worst;
+	printf("‘ÎÛ“ú:%d\n", t);
+	int count = 0;
+	//‘ÎÛ‚Ì“ú‚·‚×‚Äƒ‰ƒ“ƒ_ƒ€‚É‰Šú‰»
+	for (int i = 0; i < I; i++) {
+		solution s = i_solution;
+		while (true) {
+			int k = rand() % (K + 1);
+			s.X[i][t] = k;
+			s.nurse_evaluate(i);
+			if (s.nurse_value[i] < 1000) {
+				if (i_solution.X[i][t] != k) { count++; }
+				i_solution.X[i][t] = k;
+				printf("ŠÅŒìŽt %d‚Í‹Î–±%d‚ð‘I‘ð\n", i, k);
+				
+				break;
+			}
+		}
+	}
+	i_solution.evaluate();
+	printf("count=%d\n", count);
+}
+
 
 void solution::mutation(int num)
 {

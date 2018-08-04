@@ -48,6 +48,7 @@ int main(void)
 		weight_S = 1;
 
 		input_data();//問題データ入力
+		printf("データ入力完了\n");
 		//最適解入力(デバッグ用)
 		get_solution();
 		i_solution.input_model(X);
@@ -62,7 +63,7 @@ int main(void)
 		get_initial_solution2();
 		i_solution.evaluate();
 		i_solution.output_value();
-		i_solution.output_roster(1);
+		i_solution.output_roster(-1);
 		printf("initial_value = %lld\n", i_solution.value);
 		//output_initial();
 
@@ -72,31 +73,29 @@ int main(void)
 		do
 		{
 			terminal = one_change_N();
-
 			if (terminal)
 			{
 				//printf("成功ですの\n");
 			}
-
 		} while (terminal);
-
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
-		
-		
-		
+
 		
 		//近傍探索開始
 		solution zantei = i_solution;
 		for (p_count = 0; p_count <= 100000; p_count++) {
 			//one_change_Y();
-			select_i_t(5, 5);
+			select_i_t(I/8, T/8);
 			//two_change_Y2();
 			
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
 			}
-			//if (p_count % 100 == 0) { zantei.output_value(); }
+			if (p_count % 1000 == 0) { 
+				printf("%d回終了\n", p_count);
+				zantei.output_value(); 
+			}
 			
 			
 		}
@@ -131,9 +130,11 @@ int main(void)
 		
 		i_solution.evaluate();
 		printf("check=%d\n", i_solution.value);
+		i_solution.output_value();
 		end_clock = clock();
 		printf("Caluculation Time :%lf\n", (double)(end_clock - start_clock) / CLOCKS_PER_SEC);
-
+		i_solution.output_value();
+		i_solution.output_roster(1);
 
 
 
@@ -141,19 +142,13 @@ int main(void)
 
 		//ここから追加
 		printf("reset開始\n");
-		reset_day();
-		reset_day();
-		reset_day();
+		reset_day2();
 		i_solution.output_value();
-		i_solution.output_roster(1);
+		i_solution.output_roster(2);
 		printf("zantei=%d\n", i_solution.value);
 
-
-
-
-
-		zantei = i_solution;
-		for (p_count = 0; p_count <= 100000; p_count++) {
+		/*zantei = i_solution;
+		for (p_count = 0; p_count <= 10000; p_count++) {
 			//one_change_Y();
 			select_i_t(5, 5);
 			//two_change_Y2();
@@ -169,7 +164,7 @@ int main(void)
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
 		i_solution.output_roster(2);
-
+		*/
 	}
 	
 }

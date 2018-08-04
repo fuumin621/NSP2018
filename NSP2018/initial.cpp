@@ -45,22 +45,32 @@ void get_initial_solution2()
 	for (int i = 0; i < I; i++) {
 		int limit = 0;
 		solution best;
-		while (limit<1000000)
+		bool first_flag = true;
+		while (limit<1000)
 		{
 			int count = 0;
 			random_nurse_solution2(i);
-			while (count < 1000) {
-				one_select_i_t(i, 5);
-				if (i_solution.nurse_value[i] < 1000) { break; }
+			while (count < 10000) {
+
+				one_select_i_t(i, T/8);
+				if (first_flag || best.nurse_value[i] > i_solution.nurse_value[i]) {
+					best = i_solution;
+					first_flag = false;
+				}
+				if (best.nurse_value[i] < 1000) { break; }
+				
 				count++;
 			}
-			if (i_solution.nurse_value[i] < 1000) { break; }
+			if (best.nurse_value[i] < 1000) { break; }
 
 			limit++;
 		}
-		printf("%dl–Ú‚ÌŠÅŒìŽt:%lld\n",i,i_solution.nurse_value[i]);
+		printf("%dl–Ú‚ÌŠÅŒìŽt:%lld\n",i,best.nurse_value[i]);
+		for (int t = 0; t < T; t++) {
+			i_solution.X[i][t] = best.X[i][t];
+		}
 	}
-
+	
 	i_solution.evaluate();
 }
 
@@ -140,6 +150,7 @@ void random_nurse_solution2(int i)
 
 		for (int kk = 0; kk < K + 1; kk++) {
 			int k = RK[kk];
+			if (nurse[i].max_kinmusu[k] == 0) { continue; }
 			int temp_feasible = i_solution.if_assign_value(i, t, k);
 			if (best > temp_feasible) {
 				best_k = k;
@@ -156,9 +167,6 @@ void random_nurse_solution2(int i)
 			break;
 		}
 	}
-
-
-
 
 }
 

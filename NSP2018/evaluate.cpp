@@ -142,8 +142,8 @@ void solution::modify(int i, int t, int k)//X[i][t]をkに変更し、評価値も更新
 	}
 
 	//勤務時間
-	save_nurse_Time[i] -= Shift_Time[k_before];
-	save_nurse_Time[i] += Shift_Time[k];
+	if (k_before != K) { save_nurse_Time[i] -= Shift_Time[k_before]; }
+	if (k != K) { save_nurse_Time[i] += Shift_Time[k]; }
 	if (save_nurse_Time[i] > nurse[i].maxTime) {
 		nurse_Score[i][6] = save_nurse_Time[i] - nurse[i].maxTime;
 	}
@@ -262,8 +262,8 @@ void solution::modify_i_2t(int i, int tt[2], int kk[2])
 
 
 		//勤務時間
-		save_nurse_Time[i] -= Shift_Time[k_before[c]];
-		save_nurse_Time[i] += Shift_Time[kk[c]];
+		if (k_before[c] != K) { save_nurse_Time[i] -= Shift_Time[k_before[c]]; }
+		if (kk[c] != K) { save_nurse_Time[i] += Shift_Time[kk[c]]; }
 
 
 		//ONリクエスト
