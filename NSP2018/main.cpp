@@ -6,6 +6,7 @@
 
 void output_initial();
 void get_initial_example();
+void output_text_solution();
 
 
 int kinbou_select(int arr[4]) {
@@ -56,6 +57,7 @@ int main(void)
 		i_solution.output_value();
 		i_solution.output_roster(1);
 		printf("saiteki_value = %lld\n", i_solution.value);
+		
 	
 		//初期解生成
 		//get_initial_example();
@@ -86,7 +88,7 @@ int main(void)
 		solution zantei = i_solution;
 		for (p_count = 0; p_count <= 100000; p_count++) {
 			//one_change_Y();
-			select_i_t(I/8, T/8);
+			select_i_t(I/5, T/5);
 			//two_change_Y2();
 			
 			if (zantei.value > i_solution.value) {
@@ -136,17 +138,15 @@ int main(void)
 		i_solution.output_value();
 		i_solution.output_roster(1);
 
-
-
-
+		output_text_solution();
 
 		//ここから追加
-		printf("reset開始\n");
+		/*printf("reset開始\n");
 		reset_day2();
 		i_solution.output_value();
 		i_solution.output_roster(2);
 		printf("zantei=%d\n", i_solution.value);
-
+		*/
 		/*zantei = i_solution;
 		for (p_count = 0; p_count <= 10000; p_count++) {
 			//one_change_Y();
@@ -230,6 +230,27 @@ void get_initial_example()
 	}
 	fclose(fp);
 }
+
+void output_text_solution()
+{
+	FILE *fp;
+	char FileName[128];
+
+	sprintf(FileName, "output/ins%d/text_solution.txt", P);
+	if ((fp = fopen(FileName, "w")) == NULL) {
+		printf("file open error!!\n");
+		exit(1);
+	}
+
+	for (int i = 0; i < I; i++) {
+		for (int t = 0; t < T; t++) {
+			fprintf(fp, "%d %d %d", i, t, i_solution.X[i][t]);
+			fprintf(fp, "\n");
+		}
+	}
+	fclose(fp);
+}
+
 
 
 /*int select_nurse = 0;
