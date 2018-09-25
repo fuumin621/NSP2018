@@ -14,18 +14,45 @@
 */
 
 //instance 4
-#define P 4
+/*#define P 4
 #define I 10
 #define T 28
 #define K 2//シフト番号（0～k-1)Kは休暇
 #define O 2//1ナースあたりのDayOFFの日数
 #define B 1
 #define TRY 1000//実行可能解生成のトライ回数上限
+*/
+//instance 7
 
+#define P 7
+#define I 20
+#define T 28
+#define K 3//シフト番号（0～k-1)Kは休暇
+#define O 2//1ナースあたりのDayOFFの日数
+#define B 2
+#define TRY 1000//実行可能解生成のトライ回数上限
 
+//instance 10
+/*#define P 10
+#define I 40
+#define T 28
+#define K 5//シフト番号（0～k-1)Kは休暇
+#define O 2//1ナースあたりのDayOFFの日数
+#define B 4
+#define TRY 1000//実行可能解生成のトライ回数上限
+*/
+//instance 13
+/*#define P 13
+#define I 120
+#define T 28
+#define K 18//シフト番号（0～k-1)Kは休暇
+#define O 2//1ナースあたりのDayOFFの日数
+#define B 16
+#define TRY 1000//実行可能解生成のトライ回数上限
+*/
 //instance 15
-/*
-#define P 15//問題番号
+
+/*#define P 15//問題番号
 #define I 45
 #define T 42
 #define K 6//シフト番号（0～k-1)Kは休暇

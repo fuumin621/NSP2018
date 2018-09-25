@@ -72,7 +72,7 @@ int main(void)
 
 		//‰Šú‰ğ‰ü‘P
 		bool terminal;
-		/*do
+		do
 		{
 			terminal = one_change_N();
 			if (terminal)
@@ -82,35 +82,36 @@ int main(void)
 		} while (terminal);
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
-		*/
+
 		
 		//‹ß–T’TõŠJn
 		solution zantei = i_solution;
-		clock_t last_renew_clock = clock();
 		for (p_count = 0; p_count <= 100000; p_count++) {
 			//one_change_Y();
 			//int rand_i_size = rand() % int(I / 2) + 1;
 			//int rand_t_size = rand() % int(T / 2) + 1;
-			select_i_t(5, 5);
+			select_i_t(I/5, T/5);
 			//select_i_t(rand_i_size, rand_t_size);
 			//two_change_Y2();
 			
 			if (zantei.value > i_solution.value) {
 				zantei = i_solution;
-				last_renew_clock = clock();
 			}
 			if (p_count % 1000 == 0) { 
 				printf("%d‰ñI—¹ •]‰¿’l:%d\n", p_count,zantei.value);
 				zantei.output_value(); 
 			}
-			if ((double)(clock() - last_renew_clock) / CLOCKS_PER_SEC > 60) {
-				printf("60•bXV‚È‚µ\n");
-				break;
-			}
+			
+			
 		}
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
+
+
+
+
+
 		
 		//ÅI’Tõ
 		do
