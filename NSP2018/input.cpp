@@ -27,6 +27,9 @@ int X[I][T];
 char nurse_name[I][5];
 char shift_name[K + 1][5];
 
+int feasible_in_kinbou;
+int total_in_kinbou;
+
 
 void input_data()
 {

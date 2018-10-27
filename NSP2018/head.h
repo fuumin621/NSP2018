@@ -24,14 +24,14 @@
 */
 //instance 7
 
-#define P 7
+/*#define P 7
 #define I 20
 #define T 28
 #define K 3//シフト番号（0～k-1)Kは休暇
 #define O 2//1ナースあたりのDayOFFの日数
 #define B 2
 #define TRY 1000//実行可能解生成のトライ回数上限
-
+*/
 //instance 10
 /*#define P 10
 #define I 40
@@ -52,14 +52,14 @@
 */
 //instance 15
 
-/*#define P 15//問題番号
+#define P 15//問題番号
 #define I 45
 #define T 42
 #define K 6//シフト番号（0～k-1)Kは休暇
 #define O 4//1ナースあたりのDayOFFの日数
 #define B 5
 #define TRY 1000//実行可能解生成のトライ回数上限
-*/
+
 
 //instance 17
 /*#define P 17//問題番号
@@ -172,6 +172,9 @@ extern int Shift_Time[K];
 extern bool BWP_data[K + 1][K + 1];//1つ目のシフト→2つ目のシフトが禁止勤務パターンならtrue、そうでないならfalse
 extern int X[I][T];
 
+extern int feasible_in_kinbou;
+extern int total_in_kinbou;
+
 
 
 struct basic_data
@@ -214,7 +217,7 @@ public:
 	//制約条件
 	int Score[12];//0:最大連勤違反,1:最小連勤違反,2:最小連休違反,3:週末最大違反,4:休み希望違反,5:最大勤務数違反,6:最大勤務時間違反,7:最小勤務時間違反,8:禁止勤務パターン数,9:シフトON希望,10:シフトOFF希望,11:人数制約違反
 	int nurse_Score[I][11];//0:最大連勤違反,1:最小連勤違反,2:最小連休違反,3:週末最大違反,4:休み希望違反,5:最大勤務数違反,6:最大勤務時間違反,7:最小勤務時間違反,8:禁止勤務パターン数,9:シフトON希望,10:シフトOFF希望
-	bool feasibility;
+	int infeasibility;
 	int if_assign_value(int i, int t, int k);
 
 	//絶対制約

@@ -19,6 +19,30 @@ int kinbou_select(int arr[4]) {
 	return n;
 }
 
+void get_solution_check(int time, int MIP)
+{
+	for (int i = 0; i < I; i++)
+	{
+		for (int t = 0; t < T; t++)
+		{
+			X[i][t] = K;
+		}
+	}
+	FILE *fp;
+	int i, t, k;
+	sprintf(FileName, "input/ins%d/gurobi_sol/Solution_%ds_MIP%d.txt", P, time, MIP);
+	if ((fp = fopen(FileName, "r")) != NULL) {
+		while (fscanf(fp, "%d %d %d", &i, &t, &k) != EOF)
+		{
+			X[i][t] = k;
+		}
+	}
+	fclose(fp);
+}
+
+
+
+
 int main(void)
 {
 	//srand(time(NULL));
@@ -50,29 +74,24 @@ int main(void)
 
 		input_data();//問題データ入力
 		printf("データ入力完了\n");
-		//最適解入力(デバッグ用)
-		get_solution();
-		i_solution.input_model(X);
-		i_solution.evaluate();
-		i_solution.output_value();
-		i_solution.output_roster(1);
-		printf("saiteki_value = %lld\n", i_solution.value);
-		
+
+
 	
 		//初期解生成
 		//get_initial_example();
-		//i_solution.input_model(X);
-		get_initial_solution2();
+		get_solution_check(300,0);
+		i_solution.input_model(X);
+		//get_initial_solution2();
 		i_solution.evaluate();
 		i_solution.output_value();
 		i_solution.output_roster(-1);
 		printf("initial_value = %lld\n", i_solution.value);
 		//output_initial();
-
-
+		
+		
 		//初期解改善
 		bool terminal;
-		/*do
+		do
 		{
 			terminal = one_change_N();
 			if (terminal)
@@ -82,35 +101,146 @@ int main(void)
 		} while (terminal);
 		printf("zantei=%d\n", i_solution.value);
 		i_solution.output_value();
-		*/
+		
 		
 		//近傍探索開始
 		solution zantei = i_solution;
 		clock_t last_renew_clock = clock();
-		for (p_count = 0; p_count <= 100000; p_count++) {
-			//one_change_Y();
-			//int rand_i_size = rand() % int(I / 2) + 1;
-			//int rand_t_size = rand() % int(T / 2) + 1;
-			select_i_t(5, 5);
-			//select_i_t(rand_i_size, rand_t_size);
-			//two_change_Y2();
+		//int neighbor_size[3] = {5,8,10};
+
+		for (int n_ite = 0; n_ite <= 0; n_ite++) 
+		{
+			printf("近傍パターン : %d\n", n_ite);
+			p_count = 0;
+			last_renew_clock = clock();
+			while (true) {
+				//one_change_Y();
+				//int rand_i_size = rand() % int(I / 2) + 1;
+				//int rand_t_size = rand() % int(T / 2) + 1;
+				//select_i_t(I / neighbor_size[n_ite], T / neighbor_size[n_ite]);
+				
+				//select_i_t(neighbor_size[n_ite], neighbor_size[n_ite]);
+				select_i_t(8, 8);
+				//select_i_t(rand_i_size, rand_t_size);
+				//two_change_Y2();
+				if (zantei.value > i_solution.value) {
+					zantei = i_solution;
+					last_renew_clock = clock();
+				}
+
+				if (p_count % 1000 == 0) {
+					printf("%d回終了 評価値:%d\n", p_count, zantei.value);
+					zantei.output_value();
+				}
+				if ((double)(clock() - last_renew_clock) / CLOCKS_PER_SEC > 60)
+				{
+					printf("60秒更新なし\n");
+					i_solution = zantei;
+					last_renew_clock = clock();
+					break;
+				}
+				p_count++;
+
+			}
+			i_solution = zantei;
 			
-			if (zantei.value > i_solution.value) {
-				zantei = i_solution;
-				last_renew_clock = clock();
-			}
-			if (p_count % 1000 == 0) { 
-				printf("%d回終了 評価値:%d\n", p_count,zantei.value);
-				zantei.output_value(); 
-			}
-			if ((double)(clock() - last_renew_clock) / CLOCKS_PER_SEC > 60) {
-				printf("60秒更新なし\n");
-				break;
-			}
+
 		}
 		i_solution = zantei;
 		i_solution.output_value();
 		printf("zantei=%d\n", zantei.value);
+
+		printf("近傍探索②開始\n");
+		weight_H = 50;
+		i_solution.evaluate();
+		zantei = i_solution;
+		last_renew_clock = clock();
+		for (int n_ite = 0; n_ite <= 0; n_ite++)
+		{
+			printf("近傍パターン : %d\n", n_ite);
+			p_count = 0;
+			last_renew_clock = clock();
+			while (true) {
+				//one_change_Y();
+				//int rand_i_size = rand() % int(I / 2) + 1;
+				//int rand_t_size = rand() % int(T / 2) + 1;
+				//select_i_t(I / neighbor_size[n_ite], T / neighbor_size[n_ite]);
+
+				//select_i_t(neighbor_size[n_ite], neighbor_size[n_ite]);
+				select_i_t(8, 8);
+				//select_i_t(rand_i_size, rand_t_size);
+				//two_change_Y2();
+				if (zantei.value > i_solution.value) {
+					zantei = i_solution;
+					last_renew_clock = clock();
+				}
+
+				
+				printf("%d回終了 評価値:%d\n", p_count, zantei.value);
+				zantei.output_value();
+
+				if (i_solution.infeasibility > 30) { break; }
+				p_count++;
+
+			}
+			i_solution = zantei;
+
+
+		}
+		i_solution = zantei;
+		i_solution.output_value();
+
+		printf("近傍探索③開始\n");
+		weight_H = 1000;
+		i_solution.evaluate();
+		zantei = i_solution;
+		last_renew_clock = clock();
+		printf("zantei=%d\n", zantei.value);
+
+		for (int n_ite = 0; n_ite <= 0; n_ite++)
+		{
+			printf("近傍パターン : %d\n", n_ite);
+			p_count = 0;
+			last_renew_clock = clock();
+			while (true) {
+				//one_change_Y();
+				//int rand_i_size = rand() % int(I / 2) + 1;
+				//int rand_t_size = rand() % int(T / 2) + 1;
+				//select_i_t(I / neighbor_size[n_ite], T / neighbor_size[n_ite]);
+
+				//select_i_t(neighbor_size[n_ite], neighbor_size[n_ite]);
+				select_i_t(8, 8);
+				//select_i_t(rand_i_size, rand_t_size);
+				//two_change_Y2();
+				if (zantei.value > i_solution.value) {
+					zantei = i_solution;
+					last_renew_clock = clock();
+				}
+
+				if (p_count % 1000 == 0) {
+					printf("%d回終了 評価値:%d\n", p_count, zantei.value);
+					zantei.output_value();
+				}
+				if ((double)(clock() - last_renew_clock) / CLOCKS_PER_SEC > 60)
+				{
+					printf("60秒更新なし\n");
+					i_solution = zantei;
+					last_renew_clock = clock();
+					break;
+				}
+				p_count++;
+
+			}
+			i_solution = zantei;
+
+
+		}
+		i_solution = zantei;
+		i_solution.output_value();
+		printf("zantei=%d\n", zantei.value);
+
+
+
 		
 		//最終探索
 		do
@@ -141,7 +271,7 @@ int main(void)
 		i_solution.output_roster(1);
 
 		output_text_solution();
-
+		
 		//ここから追加
 		/*printf("reset開始\n");
 		reset_day2();
@@ -182,7 +312,7 @@ void get_solution()
 	}
 	FILE *fp;
 	int i, t, k;
-	sprintf(FileName, "input/ins%d/Solution.txt",P);
+	sprintf(FileName, "input/ins%d/Solution_600s_MIP0.txt",P);
 	if ((fp = fopen(FileName, "r")) != NULL) {
 		while (fscanf(fp, "%d %d %d", &i, &t, &k) != EOF)
 		{

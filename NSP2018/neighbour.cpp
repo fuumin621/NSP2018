@@ -728,6 +728,9 @@ void select_i_t(int select_i, int select_t)
 	int RI[I]; shuffle(RI, I);
 	int RT[T]; shuffle(RT, T);
 
+	feasible_in_kinbou=0;
+	total_in_kinbou=0;
+
 	int i, t;
 	for (int ii = 0; ii < select_i; ii++) {
 		i = RI[ii];
@@ -738,7 +741,7 @@ void select_i_t(int select_i, int select_t)
 					//s.X[i][t] = k;
 					//s.modify_temp(i, t);
 					//s.evaluate();
-
+					total_in_kinbou++;
 					s.modify(i, t, k);
 					if (zantei == NULL)//ŒðŠ·‰Â”\‚Í‚¶‚ß‚Ä‚Ì‚Æ‚«‚»‚ê‚ðŽb’è•]‰¿’l‚Ì‰Šú’l‚ÉÝ’è
 					{
@@ -747,6 +750,7 @@ void select_i_t(int select_i, int select_t)
 						best_i = i;
 						best_k = k;
 					}
+					if (s.infeasibility==0) { feasible_in_kinbou++; }
 
 					if (s.value < zantei)
 					{

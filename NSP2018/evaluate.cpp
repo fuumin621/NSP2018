@@ -13,6 +13,7 @@ void solution::evaluate()
 	{
 		Score[j] = 0;
 	}
+	infeasibility = 0;
 
 	//各看護師(or日にち)の評価値計算
 	for (int i = 0; i < I; i++) { nurse_evaluate(i); }
@@ -27,7 +28,11 @@ void solution::evaluate()
 	for (int t = 0; t < T; t++) { Score[11] += save_Cover_error[t]; }
 
 	//合計
-	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
+	for (int j = 0; j<9; j++)
+	{
+		value += Score[j] * weight_H;
+		infeasibility += Score[j];
+	}
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
 
 }
@@ -195,7 +200,12 @@ void solution::modify(int i, int t, int k)//X[i][t]をkに変更し、評価値も更新
 
 	
 	value = 0;
-	for (int j = 0; j<9; j++) { value += Score[j] * weight_H; }
+	infeasibility = 0;
+	for (int j = 0; j<9; j++)
+	{
+		value += Score[j] * weight_H;
+		infeasibility += Score[j];
+	}
 	for (int j = 9; j < 12; j++) { value += Score[j] * weight_S; }
 
 }

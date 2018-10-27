@@ -36,8 +36,8 @@ void solution::output_roster(int mode)
 	fprintf(fp, "ONリクエスト,OFFリクエスト");
 	fprintf(fp, "\n");
 	for (int i = 0; i < I; i++) {
-		//fprintf(fp, "%s,", nurse_name[i]);
-		fprintf(fp, "%d,",i);
+		fprintf(fp, "%s,", nurse_name[i]);
+		//fprintf(fp, "%d,",i);
 		for (int t = 0; t < T; t++) {
 			//fprintf(fp, "%s,", shift_name[X[i][t]]);
 			fprintf(fp, "%d,", X[i][t]);
@@ -48,10 +48,11 @@ void solution::output_roster(int mode)
 			fprintf(fp, "%d,", nurse_Score[i][x]);
 		}
 
-		/*for (int k = 0; k < K; k++) {
+		//fprintf(fp, "%d,", save_nurse_Time[i]);
+		for (int k = 0; k < K; k++) {
 			fprintf(fp, "%d,", save_nurse_kinmusu[i][k]);
 		}
-		fprintf(fp, "%d,", save_nurse_Time[i]);*/
+		fprintf(fp, "%d,", save_nurse_Time[i]);
 		
 		fprintf(fp, "\n");
 	}
@@ -96,7 +97,10 @@ void solution::output_value()
 	for (int i = 0; i < 12; i++) {
 		fprintf(fp, "%d,", Score[i]);
 	}
-
+	
+	fprintf(fp, "%d,",total_in_kinbou);
+	fprintf(fp, "%d,", feasible_in_kinbou);
+	fprintf(fp, "%d,", infeasibility);
 	fprintf(fp, "\n");
 	fclose(fp);
 }
